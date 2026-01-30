@@ -22,7 +22,7 @@ jobs:
           port: 21
           protocol: ftp
           local-dir: ./librarymanagement/
-          server-dir: ./lib/
+          server-dir: public_html/lib/
           timeout: 120000
           dangerous-clean-slate: false
           exclude: |
