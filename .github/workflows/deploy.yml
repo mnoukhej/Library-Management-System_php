@@ -40,4 +40,5 @@ jobs:
             connection.php
             **/*.doc
             **/*.sql
+            **/*.zip
 
