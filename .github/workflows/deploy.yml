@@ -38,4 +38,6 @@ jobs:
             .git/**
             .github/**
             connection.php
+            **/*.doc
+            **/*.sql
 
