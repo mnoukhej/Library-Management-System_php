@@ -13,7 +13,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Deploy to Hostinger via FTP
+      - name: Deploy via FTP to Hostinger
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
@@ -22,7 +22,7 @@ jobs:
           port: 21
           protocol: ftp
           local-dir: ./
-          server-dir: lib/
+          server-dir: dev/
           timeout: 120000
           dangerous-clean-slate: false
           exclude: |
@@ -37,3 +37,4 @@ jobs:
             **/README.md
             .git/**
             .github/**
+
