@@ -16,13 +16,21 @@ if not exist ".venv" (
 call .venv\Scripts\activate
 echo [OK] .venv activated
 
-:: Upgrade pip
+:: Upgrade pip (with auto-repair)
 echo Upgrading pip...
+python -m ensurepip --upgrade >nul 2>&1
 python -m pip install --upgrade pip
 if %errorlevel%==0 (
     echo [OK] pip upgraded
 ) else (
-    echo [ERROR] pip upgrade failed
+    echo [WARN] pip upgrade failed, attempting repair...
+    python -m ensurepip --default-pip
+    python -m pip install --upgrade pip
+    if %errorlevel%==0 (
+        echo [OK] pip repaired and upgraded
+    ) else (
+        echo [ERROR] pip repair failed
+    )
 )
 
 :: Install dependencies from requirements.txt if exists
@@ -125,10 +133,8 @@ if not exist .github\workflows\update-readme.yml (
     echo [SKIP] GitHub workflow already exists
 )
 
-
 echo =====================================
 echo Setup complete! Now you can run the server using run_server.bat
 echo =====================================
-
 
 pause
