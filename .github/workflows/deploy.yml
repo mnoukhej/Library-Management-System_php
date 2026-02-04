@@ -21,7 +21,7 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           port: 21
           protocol: ftp
-          local-dir: ./
+          local-dir: ./librarymanagement/
           server-dir: library/
           timeout: 120000
           dangerous-clean-slate: true
@@ -42,4 +42,5 @@ jobs:
             **/*.sql
             **/*.zip
             connection.php
+            **/*.doc
 
