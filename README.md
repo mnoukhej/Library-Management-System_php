@@ -24,8 +24,6 @@ This system helps to efficiently manage library operations like **book managemen
 ```
 ├── README.md
 ├── index.html
-├── library management system.docx
-├── lms.sql
 ├── setup.bat
 └── update_tree.py
 ```
