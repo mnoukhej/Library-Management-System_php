@@ -389,5 +389,10 @@ Students can search and borrow books, track issued books, and receive updates.
 ## 📜 License
 This project is licensed under the MIT License – feel free to use, modify, and distribute.
 
-## 👨‍💻 Author
-   Muhammad Noukhez
+
+## 👤 Author
+
+**Muhammad Noukhez**  
+📧 Email: mnoukhej@gmail.com  
+🐙 GitHub: https://github.com/mnoukhej  
+💼 LinkedIn: https://www.linkedin.com/in/mnoukhej/
