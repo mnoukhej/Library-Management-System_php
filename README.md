@@ -1,4 +1,4 @@
-# 📚 {{PROJECT_NAME}}
+# 📚 Library Management System Php
 
 A **web-based Library Management System** built using **PHP, MySQL, HTML, CSS, and JavaScript**.  
 This system helps to efficiently manage library operations like **book management, student records, issuing/returning books, notifications, and reports**.  
