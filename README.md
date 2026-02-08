@@ -1,4 +1,4 @@
-# 📚 Library Management System Php
+# 📁 Library Management System Php
 
 A **web-based Library Management System** built using **PHP, MySQL, HTML, CSS, and JavaScript**.  
 This system helps to efficiently manage library operations like **book management, student records, issuing/returning books, notifications, and reports**.  
@@ -352,7 +352,7 @@ Students can search and borrow books, track issued books, and receive updates.
 1. Install **XAMPP/WAMP**.  
 2. Clone the repository inside the `htdocs` folder:  
    ```bash
-   git clone https://github.com/mnoukhej/Library-Management-System_php.git
+   git clone https://github.com/CodeX404lab/Library-Management-System_php.git
 
 3. Import the database:
    - Open phpMyAdmin.
