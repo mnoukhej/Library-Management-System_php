@@ -3,7 +3,9 @@ echo =====================================
 echo Setting up the project...
 echo =====================================
 
-:: Create virtual environment if not exists
+:: -------------------------------
+:: Create virtual environment
+:: -------------------------------
 if not exist ".venv" (
     echo Creating virtual environment...
     python -m venv .venv
@@ -16,24 +18,20 @@ if not exist ".venv" (
 call .venv\Scripts\activate
 echo [OK] .venv activated
 
-:: Upgrade pip (with auto-repair)
+:: -------------------------------
+:: Upgrade pip
+:: -------------------------------
 echo Upgrading pip...
-python -m ensurepip --upgrade >nul 2>&1
 python -m pip install --upgrade pip
 if %errorlevel%==0 (
     echo [OK] pip upgraded
 ) else (
-    echo [WARN] pip upgrade failed, attempting repair...
-    python -m ensurepip --default-pip
-    python -m pip install --upgrade pip
-    if %errorlevel%==0 (
-        echo [OK] pip repaired and upgraded
-    ) else (
-        echo [ERROR] pip repair failed
-    )
+    echo [ERROR] pip upgrade failed
 )
 
-:: Install dependencies from requirements.txt if exists
+:: -------------------------------
+:: Install dependencies
+:: -------------------------------
 if exist requirements.txt (
     echo Installing dependencies from requirements.txt...
     pip install -r requirements.txt
@@ -46,7 +44,9 @@ if exist requirements.txt (
     echo [SKIP] requirements.txt not found
 )
 
-:: Create .gitignore if not exists
+:: -------------------------------
+:: Create .gitignore
+:: -------------------------------
 if not exist ".gitignore" (
     echo Creating .gitignore...
     (
@@ -79,10 +79,28 @@ if not exist ".gitignore" (
     echo [SKIP] .gitignore already exists
 )
 
-:: Create GitHub Action workflow only if not exists
-if not exist .github\workflows\update-readme.yml (
+:: -------------------------------
+:: Create CODEOWNERS (ORG BASED)
+:: -------------------------------
+if not exist ".github\CODEOWNERS" (
+    echo Creating CODEOWNERS file...
+    mkdir .github 2>nul
+    (
+        echo # Code owners for this repository
+        echo * @CodeX404lab/core-reviewers
+    ) > .github\CODEOWNERS
+    echo [OK] CODEOWNERS file created
+) else (
+    echo [SKIP] CODEOWNERS file already exists
+)
+
+:: -------------------------------
+:: Create GitHub Action workflow
+:: -------------------------------
+if not exist ".github\workflows\update-readme.yml" (
+    echo Creating GitHub Action workflow...
     mkdir .github\workflows 2>nul
-    > .github\workflows\update-readme.yml (
+    (
         echo name: Update README Folder Tree
         echo.
         echo on:
@@ -124,17 +142,14 @@ if not exist .github\workflows\update-readme.yml (
         echo.
         echo           git add README.md
         echo           git diff-index --quiet HEAD ^|^| git commit -m "🔄 Auto-update folder structure in README.md"
-        echo.
-        echo           git config commit.gpgsign true ^|^| true
         echo           git push
-    )
+    ) > .github\workflows\update-readme.yml
     echo [OK] GitHub Action workflow created
 ) else (
     echo [SKIP] GitHub workflow already exists
 )
 
 echo =====================================
-echo Setup complete! Now you can run the server using run_server.bat
+echo Setup complete!
 echo =====================================
-
 pause
