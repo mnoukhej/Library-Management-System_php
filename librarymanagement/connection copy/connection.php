@@ -15,14 +15,14 @@ if (ENVIRONMENT === 'local') {
     $host = "localhost";
     $user = "root";
     $password = "";
-    $database = "lms";
+    $database = "ramadan_db";
 } else {
 
     // 🔹 LIVE SERVER DATABASE (Hostinger)
     $host = "localhost";
-    $user = "u274161808_library_user";
+    $user = "u274161808_Imaan360";
     $password = "Kolkata@@@786";
-    $database = "u274161808_library_db";
+    $database = "u274161808_Imaan360_db";
 }
 
 // Create connection

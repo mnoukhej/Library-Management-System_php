@@ -37,9 +37,7 @@ jobs:
             **/README.md
             .git/**
             .github/**
-            connection.php
             **/*.doc
             **/*.sql
             **/*.zip
-            connection.php
             **/*.doc
